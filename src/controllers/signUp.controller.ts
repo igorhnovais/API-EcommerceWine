@@ -13,6 +13,6 @@ export async function signUp (req:Request, res: Response){
 
     } catch (err){
         console.log(err.message);
-        res.status(500).send('Server not running');
+        res.status(err.status).send(err.message);
         }
 }
