@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { users } from "../protocols/index.js";
-import usersServices from "../services/index.js";
+import { users } from "../../protocols/index.js";
+import usersServices from "../../services/index.js";
 
 export async function signUp (req:Request, res: Response){
     

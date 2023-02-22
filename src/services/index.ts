@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import usersRepositories from "../repositories/index.js"
-import { conflictError } from "../errors/conflict-error.js";
+import usersRepositories from "../repositories/users/index.js"
+import { conflictError, unauthorizedError } from "../errors/index.js";
 
 async function findEmailExists(email: string, name: string, password:string){
     const emailExists = await usersRepositories.findEmail(email);
@@ -14,10 +14,25 @@ async function findEmailExists(email: string, name: string, password:string){
     await usersRepositories.createUser(email, name, passwordhash);
 }
 
+async function findUserRegistration(email: string, password:string){
+    const account = await usersRepositories.findEmail(email);
 
+    if(!account){
+        throw unauthorizedError();
+    }
+
+    const passwordHashed = bcrypt.compareSync(password, account.password);
+    
+    if(!passwordHashed){
+        throw unauthorizedError();
+    }
+
+
+}
 
 const usersServices = {
-    findEmailExists
+    findEmailExists,
+    findUserRegistration
 }
 
 export default usersServices
