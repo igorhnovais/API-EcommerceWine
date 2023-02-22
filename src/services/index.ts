@@ -1,5 +1,7 @@
 import bcrypt from "bcrypt";
-import usersRepositories from "../repositories/users/index.js"
+import {v4 as uuid} from "uuid";
+import usersRepositories from "../repositories/users/index.js";
+import sessionsRepositories from "../repositories/sessions/index.js";
 import { conflictError, unauthorizedError } from "../errors/index.js";
 
 async function findEmailExists(email: string, name: string, password:string){
@@ -15,6 +17,7 @@ async function findEmailExists(email: string, name: string, password:string){
 }
 
 async function findUserRegistration(email: string, password:string){
+
     const account = await usersRepositories.findEmail(email);
 
     if(!account){
@@ -27,7 +30,12 @@ async function findUserRegistration(email: string, password:string){
         throw unauthorizedError();
     }
 
+    const idUser = account.id;
+    const newToken = uuid();
 
+    await sessionsRepositories.upsertToken(idUser, newToken);
+
+    return newToken;
 }
 
 const usersServices = {
@@ -35,4 +43,4 @@ const usersServices = {
     findUserRegistration
 }
 
-export default usersServices
+export default usersServices;

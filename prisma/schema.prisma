@@ -9,7 +9,7 @@ datasource db {
 
 model session {
   id      Int       @id @default(autoincrement())
-  user_id Int
+  user_id Int       @unique
   token   String?   @unique
   created DateTime? @default(now()) @db.Date
   users   users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)

@@ -2,7 +2,7 @@ import prisma from "../../database/db.js";
 
 async function findEmail(email: string){
 
-    return prisma.users.findUnique({
+    return await  prisma.users.findUnique({
         where:{
             email
         },
@@ -10,7 +10,7 @@ async function findEmail(email: string){
 }
 
 async function createUser(email:string, name:string, password:string){
-    return prisma.users.create({
+    return await prisma.users.create({
         data:{
             email,
             name,
