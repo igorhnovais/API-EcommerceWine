@@ -10,6 +10,7 @@ async function findEmail(email: string){
 }
 
 async function createUser(email:string, name:string, password:string){
+    
     return await prisma.users.create({
         data:{
             email,
