@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { userSignUpSchema } from "../models/userSignUp.models.js";
-import { findEmail } from "../repositories/findEmail.repository.js";
 import { users } from "../protocols/index.js";
 
 export async function emailValidation(req: Request, res: Response, next: NextFunction): Promise<void>{
@@ -13,13 +12,6 @@ export async function emailValidation(req: Request, res: Response, next: NextFun
         if(error){
             const erros = error.details.map(detail => detail.message);
             res.status(422).send(erros);
-            return;
-        }
-
-        const user = await findEmail(infosNewUser.email);
-        
-        if(user){
-            res.sendStatus(409);
             return;
         }
 
