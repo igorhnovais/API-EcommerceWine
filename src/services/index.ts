@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import {v4 as uuid} from "uuid";
-import usersRepositories from "../repositories/users/index.js";
-import sessionsRepositories from "../repositories/sessions/index.js";
-import { conflictError, unauthorizedError } from "../errors/index.js";
+import usersRepositories from "../repositories/users/index";
+import sessionsRepositories from "../repositories/sessions/index";
+import { conflictError, unauthorizedError } from "../errors/index";
 
 async function findEmailExists(email: string, name: string, password:string){
     const emailExists = await usersRepositories.findEmail(email);

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { userSignInSchema } from "../models/userSignin.models.js";
-import { users } from "../protocols/index.js";
+import { userSignInSchema } from "../models/userSignin.models";
+import { users } from "../protocols/index";
 
 
 export async function userValidation(req: Request, res: Response, next: NextFunction){

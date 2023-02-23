@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { userSignUpSchema } from "../models/userSignUp.models.js";
-import { users } from "../protocols/index.js";
+import { userSignUpSchema } from "../models/userSignUp.models";
+import { users } from "../protocols/index";
 
 export async function emailValidation(req: Request, res: Response, next: NextFunction): Promise<void>{
     const infosNewUser = req.body as users;

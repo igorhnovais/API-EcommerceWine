@@ -2,14 +2,13 @@
   "name": "api-ecommercewine",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "node src/server.ts",
     "build": "tsc src/server.ts",
     "prisma:seed": "npx prisma db seed",
-    "test": "npx dotenv -e .env.test npx jest -- --forceExit",
+    "test": "NODE_ENV=test jest --passWithNoTests --runInBand",
     "coverage": "npm run test -- --coverage"
   },
   "prisma": {

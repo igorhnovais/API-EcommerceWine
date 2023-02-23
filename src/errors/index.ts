@@ -1,2 +1,2 @@
-export * from "./conflict-error.js";
-export * from "./unauthorized-error.js";
+export * from "./conflict-error";
+export * from "./unauthorized-error";
