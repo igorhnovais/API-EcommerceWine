@@ -7,10 +7,11 @@ import { cleanDb, init } from "../helper";
 
 beforeAll(async() => {
     await init();
-    await cleanDb();
 });
 
-
+beforeEach(async() => {
+    await cleanDb();
+})
 
 const server = supertest(app);
 
@@ -36,5 +37,23 @@ describe("POST /sign-up", () => {
         const response = await server.post("/sign-up").send(body);
 
         expect(response.status).toBe(httpStatus.CONFLICT);
+    });
+
+    describe("when the body is valid", () => {
+        it("should respond 201 when inserted user", async () => {
+
+            const unique = faker.lorem.word(6);
+
+            const body = {
+                email: faker.internet.email(),
+                name: faker.lorem.word(),
+                password: unique,
+                confirmPassword: unique 
+            };
+
+            const response = await server.post("/sign-up").send(body);
+
+            expect(response.status).toBe(httpStatus.CREATED);
+        })
     });
 });
