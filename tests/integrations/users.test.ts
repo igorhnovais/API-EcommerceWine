@@ -29,7 +29,7 @@ describe("POST /sign-up", () => {
 
         const body = {
             email: uniqueEmail,
-            name: faker.lorem.word(),
+            name: faker.lorem.word(3),
             password: unique,
             confirmPassword:unique 
         }
