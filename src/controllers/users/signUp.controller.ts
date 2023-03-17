@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { users } from "../../protocols/index";
-import usersServices from "../../services/users/home/index";
+import usersServices from "../../services/users/index";
 
 export async function signUp (req:Request, res: Response){
     
