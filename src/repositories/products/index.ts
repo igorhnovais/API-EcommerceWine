@@ -4,8 +4,17 @@ async function findmanyProducts(){
     return prisma.products.findMany();
 }
 
+async function findFirstProduct(idProduct: number){
+    return prisma.products.findFirst({
+        where:{
+            id: idProduct
+        }      
+    })
+}
+
 const productsRepositories = {
-    findmanyProducts
+    findmanyProducts,
+    findFirstProduct
 }
 
 export default productsRepositories;
