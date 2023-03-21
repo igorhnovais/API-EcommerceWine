@@ -6,7 +6,7 @@ import { getOneProduct } from "../controllers/products/getOneProduct.controller"
 const router = Router();
 
 router.get("/products", getProducts);
-router.get("/products/wine", getOneProduct);
+router.get("/product/:id", getOneProduct);
 
 
 export default router;

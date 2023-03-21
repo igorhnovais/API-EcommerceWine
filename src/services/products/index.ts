@@ -1,5 +1,5 @@
 import productsRepositories from "../../repositories/products";
-import { notFound } from "../../errors";
+import { conflictError, notFound } from "../../errors";
 
 async function findProduts(){
     const products = await productsRepositories.findmanyProducts();
