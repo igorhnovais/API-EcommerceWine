@@ -35,7 +35,7 @@ async function findUserRegistration(email: string, password:string){
 
     await sessionsRepositories.upsertToken(idUser, newToken);
 
-    return {token: newToken};
+    return {token: newToken, name: account.name};
 }
 
 const usersServices = {
