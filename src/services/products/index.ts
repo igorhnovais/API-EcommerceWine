@@ -1,5 +1,5 @@
 import productsRepositories from "../../repositories/products";
-import { conflictError, notFound } from "../../errors";
+import { badRequest, notFound } from "../../errors";
 
 async function findProduts(){
     const products = await productsRepositories.findmanyProducts();
@@ -9,7 +9,7 @@ async function findProduts(){
 async function findOneProduct(id:number){
 
     if (!id){
-        throw notFound();
+        throw badRequest();
     }
 
     const product = await productsRepositories.findFirstProduct(id);
