@@ -16,8 +16,17 @@ async function upsertToken(idUser: number, newToken: string){
     }) 
 }
 
+async function findSession(token:string){
+    return prisma.session.findFirst({
+        where:{
+            token
+        }
+    })
+}
+
 const sessionsRepositories = {
-    upsertToken
+    upsertToken,
+    findSession
 }
 
 export default sessionsRepositories;
