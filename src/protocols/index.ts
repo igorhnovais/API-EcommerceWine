@@ -4,4 +4,5 @@ export type users = {
     name?: string,
     password: string,
     confirmPassword?:string
-}
+};
+
