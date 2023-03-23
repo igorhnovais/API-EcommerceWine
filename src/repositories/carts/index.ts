@@ -1,3 +1,4 @@
+import { truncate } from "fs";
 import prisma from "../../database/db";
 
 async function addProduct(user_id: number, id:number){
@@ -10,8 +11,17 @@ async function addProduct(user_id: number, id:number){
     })
 }
 
+async function findManyProductsCart(id: number){
+    return prisma.cart.findMany({
+        where:{
+            user_id: id
+        }
+    })
+}
+
 const cartsRepositories = {
-    addProduct
+    addProduct,
+    findManyProductsCart
 };
 
 export default cartsRepositories;
