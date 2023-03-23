@@ -1,3 +1,4 @@
+import { unauthorizedError } from "../../errors";
 import cartsRepositories from "../../repositories/carts";
 
 async function postOneCart(user_id: number, id: number){
@@ -5,8 +6,19 @@ async function postOneCart(user_id: number, id: number){
     return; 
 }
 
+async function getAllProducts(id: number){
+    
+    if (!id){
+        throw unauthorizedError()
+    }
+
+    const products = await cartsRepositories.findManyProductsCart(id);
+    return products;
+}
+
 const cartService = {
-    postOneCart
+    postOneCart,
+    getAllProducts
 };
 
 export default cartService;
