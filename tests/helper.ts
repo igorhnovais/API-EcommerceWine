@@ -10,4 +10,5 @@ export function init(): Promise<Express> {
 export async function cleanDb() {
     await prisma.session.deleteMany({});
     await prisma.users.deleteMany({});
+    await prisma.products.deleteMany({});
 }
