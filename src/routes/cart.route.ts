@@ -8,7 +8,7 @@ import { authVerification } from "../middlewares/authVerification.middleware";
 const router = Router();
 
 router.post("/cart", authVerification, postOneProduct);
-router.get("/cart", authVerification, getProductsCart )
+router.get("/cart", getProductsCart )
 
 
 export default router;
