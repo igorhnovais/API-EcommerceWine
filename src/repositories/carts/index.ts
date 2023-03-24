@@ -22,9 +22,27 @@ async function findManyProductsCart(id: number){
     })
 }
 
+async function deleteProduct(idCart:number){
+    return prisma.cart.delete({
+        where:{
+            id: idCart
+        }
+    })
+}
+
+async function findFirstproductCart(id: number){
+    return prisma.cart.findFirst({
+        where:{
+            id
+        }
+    })
+}
+
 const cartsRepositories = {
     addProduct,
-    findManyProductsCart
+    findManyProductsCart,
+    deleteProduct, 
+    findFirstproductCart
 };
 
 export default cartsRepositories;
