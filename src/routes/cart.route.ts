@@ -8,7 +8,8 @@ import { authVerification } from "../middlewares/authVerification.middleware";
 
 const router = Router();
 
-router.post("/cart", authVerification, postOneProduct);
+router.all("/*", authVerification);
+router.post("/cart", postOneProduct);
 router.get("/cart", getProductsCart );
 router.delete("/cart/:id", deleteProductCart)
 
