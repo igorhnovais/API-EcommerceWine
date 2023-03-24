@@ -33,7 +33,7 @@ async function deleteProductCart(id: number){
 
 async function getBalanceCart(id:number){
     const balance = await cartsRepositories.findBalance(id);
-    console.log(balance)
+    console.log("oi",balance)
     return balance;
 }
 

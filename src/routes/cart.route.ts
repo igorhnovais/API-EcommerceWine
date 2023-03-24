@@ -9,11 +9,11 @@ import { getBalanceProducts } from "../controllers/cart/getBalanceProducts.contr
 
 const router = Router();
 
-//router.all("/*", authVerification);
+router.all("/*", authVerification);
 router.post("/cart", postOneProduct);
 router.get("/cart", getProductsCart );
 router.delete("/cart/:id", deleteProductCart);
-router.get("cart-balance", getBalanceProducts);
+router.get("/cart-balance", getBalanceProducts);
 
 
 export default router;

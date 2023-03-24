@@ -39,7 +39,7 @@ async function findFirstproductCart(id: number){
 }
 
 async function findBalance(id: number){
-    return prisma.$queryRaw`
+    const response = prisma.$queryRaw`
         select,
         COALESCE(sum(products.value), 0)::INTEGER as balance
         from users
@@ -50,6 +50,7 @@ async function findBalance(id: number){
         where users.id=${id}
         group by users.id
     `
+    console.log("pl", response.then)
 }
 
 const cartsRepositories = {
