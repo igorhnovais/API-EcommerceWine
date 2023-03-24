@@ -31,10 +31,17 @@ async function deleteProductCart(id: number){
     return;
 }
 
+async function getBalanceCart(id:number){
+    const balance = await cartsRepositories.findBalance(id);
+    console.log(balance)
+    return balance;
+}
+
 const cartService = {
     postOneCart,
     getAllProducts,
-    deleteProductCart
+    deleteProductCart,
+    getBalanceCart
 };
 
 export default cartService;
