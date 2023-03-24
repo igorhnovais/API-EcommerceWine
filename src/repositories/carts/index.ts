@@ -15,6 +15,9 @@ async function findManyProductsCart(id: number){
     return prisma.cart.findMany({
         where:{
             user_id: id
+        },
+        include:{
+            products: true
         }
     })
 }
