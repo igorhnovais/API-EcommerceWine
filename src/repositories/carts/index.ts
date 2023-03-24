@@ -38,11 +38,26 @@ async function findFirstproductCart(id: number){
     })
 }
 
+async function findBalance(id: number){
+    return prisma.$queryRaw`
+        select,
+        COALESCE(sum(products.value), 0)::INTEGER as balance
+        from users
+        left join cart
+        on users.id = cart.user_id
+        join products
+        on cart.product_id = products.id
+        where users.id=${id}
+        group by users.id
+    `
+}
+
 const cartsRepositories = {
     addProduct,
     findManyProductsCart,
     deleteProduct, 
-    findFirstproductCart
+    findFirstproductCart,
+    findBalance
 };
 
 export default cartsRepositories;
