@@ -3,7 +3,7 @@ import productsService from "../../services/products";
 import cartService from "../../services/carts";
 
 export async function deleteProductCart(req:Request, res: Response){
-    const {id} = req.body;
+    const {id} = req.params;
     const idProduct = Number(id);
     
     try{
