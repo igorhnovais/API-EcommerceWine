@@ -17,6 +17,10 @@ async function getAllProducts(id: number){
 }
 
 async function deleteProductCart(id: number){
+    if(!id){
+        throw notFound();
+    }
+    
     const productCart = await cartsRepositories.findFirstproductCart(id);
 
     if(!productCart){
