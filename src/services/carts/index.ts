@@ -1,4 +1,4 @@
-import { unauthorizedError } from "../../errors";
+import { notFound, unauthorizedError } from "../../errors";
 import cartsRepositories from "../../repositories/carts";
 
 async function postOneCart(user_id: number, id: number){
@@ -16,9 +16,21 @@ async function getAllProducts(id: number){
     return products;
 }
 
+async function deleteProductCart(id: number){
+    const productCart = await cartsRepositories.findFirstproductCart(id);
+
+    if(!productCart){
+        throw notFound()
+    }
+    
+    await cartsRepositories.deleteProduct(id);
+    return;
+}
+
 const cartService = {
     postOneCart,
-    getAllProducts
+    getAllProducts,
+    deleteProductCart
 };
 
 export default cartService;
