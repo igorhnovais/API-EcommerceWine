@@ -10,7 +10,7 @@ const router = Router();
 
 router.post("/cart", authVerification, postOneProduct);
 router.get("/cart", getProductsCart );
-router.delete("/cart", deleteProductCart)
+router.delete("/cart/:id", deleteProductCart)
 
 
 export default router;
