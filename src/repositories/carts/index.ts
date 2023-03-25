@@ -1,4 +1,3 @@
-import { truncate } from "fs";
 import prisma from "../../database/db";
 
 async function addProduct(user_id: number, id:number){
@@ -39,8 +38,9 @@ async function findFirstproductCart(id: number){
 }
 
 async function findBalance(id: number){
-    const response = prisma.$queryRaw`
-        select,
+    
+    return prisma.$queryRaw`
+        select
         COALESCE(sum(products.value), 0)::INTEGER as balance
         from users
         left join cart
@@ -50,7 +50,6 @@ async function findBalance(id: number){
         where users.id=${id}
         group by users.id
     `
-    console.log("pl", response.then)
 }
 
 const cartsRepositories = {
