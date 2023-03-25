@@ -24,9 +24,27 @@ async function findSession(token:string){
     })
 }
 
+async function findSessionIdUser(id: number){
+    return prisma.session.findFirst({
+        where:{
+            user_id: id
+        }
+    })
+}
+
+async function deleteSession(id: number){
+    return prisma.session.delete({
+        where:{
+            user_id: id
+        }
+    })
+}
+
 const sessionsRepositories = {
     upsertToken,
-    findSession
+    findSession,
+    findSessionIdUser,
+    deleteSession
 }
 
 export default sessionsRepositories;
