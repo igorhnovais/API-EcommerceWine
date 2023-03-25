@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import {v4 as uuid} from "uuid";
 import usersRepositories from "../../repositories/users/index";
 import sessionsRepositories from "../../repositories/sessions/index";
-import { conflictError, unauthorizedError } from "../../errors/index";
+import { badRequest, conflictError, unauthorizedError } from "../../errors/index";
 
 async function findEmailExists(email: string, name: string, password:string){
     const emailExists = await usersRepositories.findEmail(email);
@@ -38,9 +38,24 @@ async function findUserRegistration(email: string, password:string){
     return {token: newToken, name: account.name};
 }
 
+async function deleteUserSession(id: number){
+    if(!id){
+        throw badRequest();
+    }
+
+    const userExist = await sessionsRepositories.findSessionIdUser(id);
+
+    if(!userExist){
+        throw unauthorizedError();
+    }
+
+    await sessionsRepositories.deleteSession(id); 
+}
+
 const usersServices = {
     findEmailExists,
-    findUserRegistration
+    findUserRegistration,
+    deleteUserSession
 }
 
 export default usersServices;
