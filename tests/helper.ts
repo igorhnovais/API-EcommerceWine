@@ -11,4 +11,5 @@ export async function cleanDb() {
     await prisma.session.deleteMany({});
     await prisma.users.deleteMany({});
     await prisma.products.deleteMany({});
+    await prisma.cart.deleteMany({});
 }
