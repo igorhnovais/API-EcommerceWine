@@ -39,12 +39,11 @@ describe("GET /cart", () => {
         //     const body = await usersFactories.generateUser();          
         //     await usersFactories.createNewUser(body);
 
-        //     const user = await server.post("/sign-in").send(body);
-        //     const token = user.body.token;
-
+        //     const oi = await server.post("/sign-in").send(body);
+    
         //     await cartsFactory.createOneProductCart();
 
-        //     const response = await server.get("/cart").set("Authorization", `Bearer ${token}`);
+        //     const response = await server.get("/cart").set("Authorization", `Bearer ${oi.body.token}`);
         //     expect(response.status).toBe(httpStatus.OK);
         //     expect(response.body).toEqual(
         //         expect.arrayContaining([
@@ -103,6 +102,8 @@ describe("POST /cart", () => {
     });
 
     describe("when token is valid", () => {
-        it("should respond with status 201 when created new product cart", async () => {})
+        it("should respond with status 201 when created new product cart", async () => {
+            
+        });
     });
 });
