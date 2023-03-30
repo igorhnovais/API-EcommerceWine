@@ -22,9 +22,14 @@ async function findOneProduct(id:number){
 
 }
 
+async function findOnlyWines(){
+    return await productsRepositories.findWines();
+}
+
 const productsService = {
     findProduts,
-    findOneProduct
+    findOneProduct,
+    findOnlyWines
 }
 
 export default productsService;
