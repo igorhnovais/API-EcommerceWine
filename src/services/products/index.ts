@@ -30,11 +30,16 @@ async function findOnlyCups(){
     return await productsRepositories.findCups();
 }
 
+async function findOnlyTaboos(){
+    return await productsRepositories.findTaboos();
+}
+
 const productsService = {
     findProduts,
     findOneProduct,
     findOnlyWines,
-    findOnlyCups
+    findOnlyCups,
+    findOnlyTaboos
 }
 
 export default productsService;
