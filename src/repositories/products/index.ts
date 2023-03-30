@@ -28,11 +28,20 @@ async function findCups(){
     })
 }
 
+async function findTaboos(){
+    return prisma.products.findMany({
+        where:{
+            type_product: "taboo"
+        }
+    })
+}
+
 const productsRepositories = {
     findmanyProducts,
     findFirstProduct,
     findWines,
-    findCups
+    findCups,
+    findTaboos
 }
 
 export default productsRepositories;
