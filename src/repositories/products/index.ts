@@ -36,12 +36,24 @@ async function findTaboos(){
     })
 }
 
+async function findManySearchedProducts(search: string){
+    return prisma.products.findMany({
+        where:{
+            name:{
+                contains: search,
+                mode: "insensitive"
+            }
+        }
+    })
+}
+
 const productsRepositories = {
     findmanyProducts,
     findFirstProduct,
     findWines,
     findCups,
-    findTaboos
+    findTaboos,
+    findManySearchedProducts
 }
 
 export default productsRepositories;
