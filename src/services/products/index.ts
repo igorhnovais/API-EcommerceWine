@@ -34,12 +34,18 @@ async function findOnlyTaboos(){
     return await productsRepositories.findTaboos();
 }
 
+async function findSearchedProducts(search: string){
+    const products = await productsRepositories.findManySearchedProducts(search);
+    return products;
+}
+
 const productsService = {
     findProduts,
     findOneProduct,
     findOnlyWines,
     findOnlyCups,
-    findOnlyTaboos
+    findOnlyTaboos,
+    findSearchedProducts
 }
 
 export default productsService;
