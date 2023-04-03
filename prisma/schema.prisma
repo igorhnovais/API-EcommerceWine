@@ -12,6 +12,7 @@ model session {
   user_id Int       @unique
   token   String?   @unique
   created DateTime? @default(now()) @db.Date
+  adm     Boolean?
   users   users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
