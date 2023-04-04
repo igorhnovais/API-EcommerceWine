@@ -15,7 +15,8 @@ async function createUser(email:string, name:string, password:string){
         data:{
             email,
             name,
-            password
+            password,
+            adm: false
         }
     })
 }
@@ -30,10 +31,21 @@ async function findNameUser(user_id: number){
     return response.name
 }
 
+async function findAdmPermission(id: number){
+    const response = await prisma.users.findFirst({
+        where:{
+            id
+        }
+    })
+
+    return response.adm
+}
+
 const usersRepositories = {
     findEmail,
     createUser,
-    findNameUser
+    findNameUser,
+    findAdmPermission
 }
 
 export default usersRepositories
