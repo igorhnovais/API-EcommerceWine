@@ -52,10 +52,15 @@ async function deleteUserSession(id: number){
     await sessionsRepositories.deleteSession(id); 
 }
 
+async function findAdmTrue(id: number){
+    return await usersRepositories.findAdmPermission(id);
+}
+
 const usersServices = {
     findEmailExists,
     findUserRegistration,
-    deleteUserSession
+    deleteUserSession,
+    findAdmTrue
 }
 
 export default usersServices;
