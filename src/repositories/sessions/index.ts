@@ -40,11 +40,12 @@ async function deleteSession(id: number){
     })
 }
 
+
 const sessionsRepositories = {
     upsertToken,
     findSession,
     findSessionIdUser,
-    deleteSession
+    deleteSession,
 }
 
 export default sessionsRepositories;
