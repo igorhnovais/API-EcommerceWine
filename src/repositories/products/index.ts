@@ -47,13 +47,22 @@ async function findManySearchedProducts(search: string){
     })
 }
 
+async function deleteProduct(id: number){
+    return prisma.products.delete({
+        where:{
+            id
+        }
+    })
+}
+
 const productsRepositories = {
     findmanyProducts,
     findFirstProduct,
     findWines,
     findCups,
     findTaboos,
-    findManySearchedProducts
+    findManySearchedProducts,
+    deleteProduct
 }
 
 export default productsRepositories;
