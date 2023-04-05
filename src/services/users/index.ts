@@ -2,7 +2,8 @@ import bcrypt from "bcrypt";
 import {v4 as uuid} from "uuid";
 import usersRepositories from "../../repositories/users/index";
 import sessionsRepositories from "../../repositories/sessions/index";
-import { badRequest, conflictError, unauthorizedError } from "../../errors/index";
+import { badRequest, conflictError, notFound, unauthorizedError } from "../../errors/index";
+import productsRepositories from "../../repositories/products";
 
 async function findEmailExists(email: string, name: string, password:string){
     const emailExists = await usersRepositories.findEmail(email);
@@ -56,11 +57,26 @@ async function findAdmTrue(id: number){
     return await usersRepositories.findAdmPermission(id);
 }
 
+async function deleteProductByAdm(id: number){
+    if(!id){
+        throw badRequest();
+    }
+
+    const productExist = await productsRepositories.findFirstProduct(id);
+
+    if(!productExist){
+        throw notFound();
+    }
+
+    await productsRepositories.deleteProduct(id); 
+}
+
 const usersServices = {
     findEmailExists,
     findUserRegistration,
     deleteUserSession,
-    findAdmTrue
+    findAdmTrue,
+    deleteProductByAdm
 }
 
 export default usersServices;
