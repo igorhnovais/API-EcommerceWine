@@ -14,8 +14,6 @@ router.get("/product/:id", getOneProduct);
 router.get("/products/wine", getwine);
 router.get("/products/cup", getCups);
 router.get("/products/taboo", getTaboos);
-router.post("/products/searched", getSearchedProducts)
-
-
+router.post("/products/searched", getSearchedProducts);
 
 export default router;
