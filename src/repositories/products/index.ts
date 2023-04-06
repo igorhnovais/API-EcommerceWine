@@ -1,4 +1,5 @@
 import prisma from "../../database/db";
+import { product } from "../../protocols/index";
 
 async function findmanyProducts(){
     return prisma.products.findMany();
@@ -55,6 +56,19 @@ async function deleteProduct(id: number){
     })
 }
 
+async function insertProduct(body: product){
+    return prisma.products.create({
+        data:{
+            name: body.name,
+            image: body.image,
+            description: body.description,
+            type: body.type,
+            value: Number(body.value),
+            type_product: body.type_product
+        }
+    })
+}
+
 const productsRepositories = {
     findmanyProducts,
     findFirstProduct,
@@ -62,7 +76,8 @@ const productsRepositories = {
     findCups,
     findTaboos,
     findManySearchedProducts,
-    deleteProduct
+    deleteProduct,
+    insertProduct
 }
 
 export default productsRepositories;
