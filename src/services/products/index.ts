@@ -1,5 +1,6 @@
 import productsRepositories from "../../repositories/products";
 import { badRequest, notFound } from "../../errors";
+import { product } from "../../protocols/index";
 
 async function findProduts(){
     const products = await productsRepositories.findmanyProducts();
@@ -39,13 +40,19 @@ async function findSearchedProducts(search: string){
     return products;
 }
 
+async function insertNewProductByAdm(body: product){
+    // se ja tiver esse produto não cadastrar
+    await productsRepositories.insertProduct(body);
+}
+
 const productsService = {
     findProduts,
     findOneProduct,
     findOnlyWines,
     findOnlyCups,
     findOnlyTaboos,
-    findSearchedProducts
+    findSearchedProducts,
+    insertNewProductByAdm
 }
 
 export default productsService;
