@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "start": "node src/server.ts",
-    "build": "tsc src/server.ts",
+    "start": "npx prisma migrate dev && npx prisma db seed && node dist/server.js",
+    "build": "tsc",
     "prisma:seed": "npx prisma db seed",
     "test": "npm run test:load-envs jest  -- --passWithNoTests --runInBand",
     "test:coverage": "npm run test jest --passWithNoTests --runInBand --coverage --collectCoverageFrom='./src/**'",
