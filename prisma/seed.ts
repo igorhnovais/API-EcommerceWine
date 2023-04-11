@@ -187,17 +187,17 @@ async function main(){
         ]
     })
 
-    const pass = "adm123"
-    const passwordHashed = bcrypt.hashSync(pass, 12)
+    // const pass = "adm123"
+    // const passwordHashed = bcrypt.hashSync(pass, 12)
 
-    await prisma.users.create({
-        data:{
-            email: "adm@gmail.com.br",
-            name: "adm",
-            password: passwordHashed,
-            adm: true
-        }
-    })
+    // await prisma.users.create({
+    //     data:{
+    //         email: "adm@gmail.com.br",
+    //         name: "adm",
+    //         password: passwordHashed,
+    //         adm: true
+    //     }
+    // })
 }
 
 main()
