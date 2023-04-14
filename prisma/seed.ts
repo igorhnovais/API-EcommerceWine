@@ -192,7 +192,6 @@ async function main(){
     })
     }
     
-
     const user = await prisma.users.findFirst({
         where:{
             email: "adm@gmail.com.br"
